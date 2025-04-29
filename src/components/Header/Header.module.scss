@@ -1,0 +1,134 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 0 3rem;
+}
+
+.logoWrap {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.logoBox {
+  background: #fff;
+  border-radius: 1.2rem;
+  padding: 0.4rem 1.1rem;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.10);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #18181b;
+  letter-spacing: 0.18em;
+}
+
+.logoText {
+  font-weight: 800;
+  color: #18181b;
+  font-size: 1.3rem;
+  letter-spacing: 0.2em;
+}
+
+.companyName {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.85rem;
+  color: #9ca3af;
+  font-weight: 700;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+  height: 100%;
+}
+
+.navLink {
+  font-size: 1.15rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 400;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  position: relative;
+
+  &:hover {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  }
+}
+
+.logo {
+  font-size: 2rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
+               0 0 20px rgba(255, 255, 255, 0.7),
+               0 0 30px rgba(255, 255, 255, 0.7);
+  animation: logoPulse 3s infinite;
+}
+
+.activeLink {
+  opacity: 1;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
+               0 0 20px rgba(255, 255, 255, 0.7);
+}
+
+.active {
+  color: #fff;
+  border-bottom: 2px solid #3b82f6;
+}
+
+.progressContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 101;
+  overflow: hidden;
+}
+
+.progressBar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
+              0 0 20px rgba(255, 255, 255, 0.7);
+  will-change: width;
+  transform: translateZ(0);
+}
+
+@keyframes logoPulse {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
+                 0 0 20px rgba(255, 255, 255, 0.7),
+                 0 0 30px rgba(255, 255, 255, 0.7);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.9),
+                 0 0 25px rgba(255, 255, 255, 0.9),
+                 0 0 35px rgba(255, 255, 255, 0.9);
+  }
+} 

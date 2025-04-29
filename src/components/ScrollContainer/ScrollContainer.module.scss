@@ -1,0 +1,7 @@
+.scrollContainer {
+  position: relative;
+  min-height: 200vh; // At least twice the viewport height
+  background: linear-gradient(135deg, #18181b 0%, #23232a 60%, #18181b 100%);
+  overflow-x: hidden;
+  overflow-y: auto;
+} 

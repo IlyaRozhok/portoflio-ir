@@ -1,0 +1,265 @@
+.featuresSection {
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+  background-color: #1a1333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  font-weight: 700;
+  color: #ffffff;
+  
+  .codeComment {
+    color: #6c7a89;
+    font-family: 'Fira Code', monospace;
+  }
+  
+  .highlight {
+    color: #61dafb; /* Match the code theme cyan */
+    font-family: 'Fira Code', monospace;
+  }
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.featureCard {
+  background-color: rgba(26, 20, 40, 0.92);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1.5px solid rgba(80, 70, 130, 0.20);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.featureIcon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1.5rem;
+  padding: 0.8rem;
+  border-radius: 50%;
+  background-color: rgba(145, 97, 231, 0.1);
+  color: #9161e7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featureTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.featureDescription {
+  color: #d8d1e6;
+  line-height: 1.6;
+}
+
+.sectionConnector {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(180deg, transparent, #120d24);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.featuresWrapper {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.radialHighlight {
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  top: 33%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(90,50,180,0.12) 0%, transparent 70%);
+  z-index: 0;
+  filter: blur(2px);
+}
+
+.vignette {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(5,0,15,0.7) 0%, transparent 60%, rgba(5,0,15,0.7) 100%);
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+
+.featuresLinkLineWrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -28%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 0;
+  z-index: 1;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+}
+
+.featuresLinkLine {
+  position: relative;
+  width: 80%;
+  height: 6px;
+  background: #2a2042;
+  border-radius: 3px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.featuresLinkLineHighlight {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #9161e7 0%, #585bfc 100%);
+  box-shadow: 0 0 8px #7c52e088;
+  border-radius: 3px;
+  transition: width 0.3s;
+  z-index: 2;
+}
+
+.featuresRow {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 64rem;
+  min-height: 340px;
+  z-index: 3;
+}
+
+@media (min-width: 900px) {
+  .featuresRow {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    min-height: 340px;
+  }
+}
+
+@media (max-width: 700px) {
+  .featuresRow {
+    gap: 1.2rem;
+  }
+  .featureCard {
+    padding: 1.5rem 1rem 1rem 1rem;
+  }
+  .sectionTitle {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.approachSection {
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.approachGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.approachCard {
+  background-color: rgba(10, 25, 41, 0.7);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(97, 218, 251, 0.1);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(97, 218, 251, 0.2);
+    border-color: rgba(97, 218, 251, 0.3);
+  }
+}
+
+.approachIcon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1.5rem;
+  padding: 0.8rem;
+  border-radius: 50%;
+  background-color: rgba(97, 218, 251, 0.1);
+  color: #61dafb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.approachTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  font-family: 'Fira Code', monospace;
+}
+
+.approachDescription {
+  color: #a0aec0;
+  line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  .approachGrid {
+    gap: 1.2rem;
+  }
+  .approachCard {
+    padding: 1.5rem 1rem 1rem 1rem;
+  }
+  .sectionTitle {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+  }
+} 

@@ -1,0 +1,291 @@
+.worksBg {
+  position: relative;
+  background: linear-gradient(180deg, #0f0c1d 0%, #1a1333 20%, #120d24 100%);
+  box-shadow: 0 0 120px 0 rgba(59,130,246,0.08) inset;
+  overflow: hidden;
+  margin-top: -2rem;
+}
+
+.worksBg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(90,50,180,0.12) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.worksBg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://www.transparenttextures.com/patterns/noise.png');
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sectionConnector {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(180deg, transparent, #504aadeb);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.worksSection {
+  position: relative;
+  padding: 8rem 0;
+  overflow: hidden;
+  background-color: #051b31; /* Match home page gradient */
+  background-image: radial-gradient(circle at 30% 20%, rgba(14, 40, 60, 0.8) 0%, rgba(5, 27, 49, 1) 60%);
+  z-index: 1;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.07;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+}
+
+.parallaxBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%; /* Extended height for more dramatic parallax */
+  overflow: hidden;
+  z-index: 0;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(5, 27, 49, 0) 0%, rgba(5, 27, 49, 0.8) 80%);
+    pointer-events: none;
+  }
+}
+
+.codeElement {
+  position: absolute;
+  color: rgba(97, 218, 251, 0.25); /* Increased opacity for better visibility */
+  font-family: 'Fira Code', monospace;
+  white-space: nowrap;
+  pointer-events: none;
+  will-change: transform;
+  z-index: 0;
+  text-shadow: 0 0 15px rgba(97, 218, 251, 0.2); /* Added glow effect */
+  font-weight: 500; /* Made font slightly bolder */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  font-weight: 700;
+  color: #ffffff;
+  
+  .codeComment {
+    color: #6c7a89;
+    font-family: 'Fira Code', monospace;
+  }
+  
+  .highlight {
+    color: #61dafb; /* Match the code theme cyan */
+    font-family: 'Fira Code', monospace;
+  }
+}
+
+.worksContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2.5rem;
+}
+
+.workItem {
+  position: relative;
+  background-color: rgba(10, 25, 41, 0.7);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  border: 1px solid rgba(97, 218, 251, 0.1);
+  will-change: transform;
+  z-index: 1;
+  
+  &:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(97, 218, 251, 0.15);
+    border-color: rgba(97, 218, 251, 0.3);
+    z-index: 2;
+    
+    .workOverlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .workImage {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.workImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+}
+
+.workImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.workOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    rgba(10, 25, 41, 0.85) 0%, 
+    rgba(10, 25, 41, 0.95) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 3;
+}
+
+.workTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  font-family: 'Fira Code', monospace;
+  text-align: center;
+}
+
+.workLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 280px;
+}
+
+.workLink {
+  display: flex;
+  align-items: center;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  background-color: rgba(97, 218, 251, 0.1);
+  transition: background-color 0.3s ease;
+  flex-wrap: wrap;
+  
+  &:hover {
+    background-color: rgba(97, 218, 251, 0.2);
+  }
+}
+
+.workContent {
+  padding: 1.5rem;
+}
+
+.workDescription {
+  color: #a0aec0;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.techTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.8rem;
+  background-color: rgba(97, 218, 251, 0.1);
+  color: #61dafb;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-family: 'Fira Code', monospace;
+  
+  .tagImport {
+    color: #5a67d8;
+    margin-right: 0.3rem;
+    font-size: 0.75rem;
+  }
+}
+
+.constKeyword {
+  color: #5a67d8;
+  margin-right: 0.2rem;
+}
+
+.variableName {
+  color: #4fd1c5;
+}
+
+.operator {
+  color: #ffffff;
+}
+
+.stringValue {
+  color: #f56565;
+  margin: 0 0.2rem;
+}
+
+.semicolon {
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .worksContainer {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .workImageWrapper {
+    height: 200px;
+  }
+  
+  .workTitle {
+    font-size: 1.5rem;
+  }
+  
+  .sectionTitle {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+  }
+} 
