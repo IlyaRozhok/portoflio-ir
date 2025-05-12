@@ -2,6 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './Works.module.scss';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import moodern from '../../assets/img/moodern.png';
+import portfolio1 from '../../assets/img/portfolio1.png';
+import webAgency from '../../assets/img/web-agency.png';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,41 +23,41 @@ const Works = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const worksRef = useRef<HTMLDivElement>(null);
   const parallaxRef = useRef<HTMLDivElement>(null);
-  const [activeWork, setActiveWork] = useState(0);
+
   
-  // Sample work items - replace with your actual projects
+
   const works: WorkItem[] = [
     {
       id: 'project1',
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce solution with admin dashboard, user authentication, and payment processing.',
-      tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      imageUrl: 'https://via.placeholder.com/800x600/0a1929/61dafb?text=E-Commerce+Project',
-      githubUrl: 'https://github.com/yourusername/project1',
-      liveUrl: 'https://project1-demo.com'
+      title: 'Web agency',
+      description: 'Web agency website with a modern and responsive animated design',
+      tech: ['Next.js', 'Tailwind', 'Aceternity'],
+      imageUrl: webAgency,
+      githubUrl: 'https://github.com/IlyaRozhok/web-agency-ptf',
+      liveUrl: 'https://web-agency-liart.vercel.app/'
     },
     {
       id: 'project2',
-      title: 'Task Management App',
-      description: 'Collaborative task management tool with real-time updates and team collaboration features.',
-      tech: ['Next.js', 'TypeScript', 'Firebase', 'Tailwind'],
-      imageUrl: 'https://via.placeholder.com/800x600/0a1929/61dafb?text=Task+Management+App',
-      githubUrl: 'https://github.com/yourusername/project2',
-      liveUrl: 'https://project2-demo.com'
+      title: 'Interior design studio',
+      description: 'Commercial and private interiors',
+      tech: ['React', 'email.js', 'SCSS'],
+      imageUrl: moodern,
+      githubUrl: 'https://github.com/IlyaRozhok/maramus',
+      liveUrl: 'https://moodern-studio.com/'
     },
     {
       id: 'project3',
       title: 'Portfolio Website',
       description: 'Modern, responsive portfolio website with interactive UI elements and animations.',
-      tech: ['React', 'GSAP', 'SCSS', 'Netlify'],
-      imageUrl: 'https://via.placeholder.com/800x600/0a1929/61dafb?text=Portfolio+Project',
-      githubUrl: 'https://github.com/yourusername/project3',
+      tech: ['React', 'GSAP', 'SCSS'],
+      imageUrl: portfolio1,
+      githubUrl: 'https://github.com/IlyaRozhok/frontend',
       liveUrl: 'https://project3-demo.com'
     }
   ];
 
   useEffect(() => {
-    // Main section animation
+    
     if (sectionRef.current) {
       gsap.fromTo(
         sectionRef.current,
@@ -69,22 +73,22 @@ const Works = () => {
       );
     }
 
-    // Parallax effect for the background code elements
+  
     if (parallaxRef.current) {
       gsap.to(parallaxRef.current.querySelectorAll(`.${styles.codeElement}`), {
-        y: (i) => -150 - i * 80, // Increased movement for more dramatic effect
-        x: (i) => (i % 2 === 0 ? 50 : -50), // Add slight horizontal movement
+        y: (i) => -150 - i * 80, 
+        x: (i) => (i % 2 === 0 ? 50 : -50), 
         ease: 'none',
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top bottom',
           end: 'bottom top',
-          scrub: 0.8, // Smoother scrubbing
+          scrub: 0.8, 
         },
       });
     }
 
-    // Work items reveal animation
+    
     if (worksRef.current) {
       const workItems = worksRef.current.querySelectorAll(`.${styles.workItem}`);
       
@@ -117,7 +121,7 @@ const Works = () => {
     };
   }, []);
 
-  // Generate random positions for code elements in the background
+  
   const generateCodeElements = () => {
     const elements = [];
     const codeSnippets = [
@@ -136,7 +140,7 @@ const Works = () => {
       'grid-template-columns: repeat(3, 1fr);'
     ];
     
-    // Increase number of elements for more density
+    
     for (let i = 0; i < 25; i++) {
       const randomSnippet = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
       elements.push(
@@ -146,9 +150,9 @@ const Works = () => {
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
-            opacity: 0.15 + (Math.random() * 0.15), // Increased opacity range
+            opacity: 0.15 + (Math.random() * 0.15), 
             transform: `rotate(${(Math.random() * 6) - 3}deg)`,
-            fontSize: `${1.0 + (Math.random() * 0.6)}rem` // Increased font size
+            fontSize: `${1.0 + (Math.random() * 0.6)}rem` 
           }}
         >
           {randomSnippet}
@@ -174,7 +178,6 @@ const Works = () => {
             <div 
               key={work.id} 
               className={`${styles.workItem}`}
-              onMouseEnter={() => setActiveWork(index)}
             >
               <div className={styles.workImageWrapper}>
                 <img src={work.imageUrl} alt={work.title} className={styles.workImage} />

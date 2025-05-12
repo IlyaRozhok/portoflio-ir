@@ -192,22 +192,136 @@
     font-size: 2.2rem;
     margin-bottom: 2.5rem;
   }
+  .timelineLine {
+    height: 100% !important;
+    right: 10px !important;
+  }
+  .timelineLamp {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .approachSection {
-  padding: 6rem 0;
+  padding: 4rem 0;
   position: relative;
   overflow: hidden;
+  background-color: #0a121f;
+  background-image: radial-gradient(circle at 70% 20%, rgba(60, 100, 150, 0.08) 0%, transparent 70%);
 }
 
-.approachGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 5;
+}
+
+.timelineContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  font-weight: 700;
+  color: #ffffff;
   
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
+  .codeComment {
+    color: #6c7a89;
+    font-family: 'Fira Code', monospace;
   }
+  
+  .highlight {
+    color: #61dafb; /* Match the code theme cyan */
+    font-family: 'Fira Code', monospace;
+  }
+}
+
+.timelineWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-height: 500px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timelineLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -3%;
+  transform: none;
+  width: 3px;
+  height: 100%;
+  background-color: rgba(97, 218, 251, 0.1);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.timelineProgress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(180deg, #61dafb 0%, #5651e5 60%, #FFD700 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
+  z-index: 2;
+}
+
+.timelineLamp {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgba(10, 25, 41, 0.7);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.timelineLampIcon {
+  color: rgba(255, 215, 0, 0.3);
+  transition: color 0.5s ease, transform 0.5s ease;
+  font-size: 32px;
+}
+
+.timelineLampActive .timelineLampIcon {
+  color: #FFD700;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+  transform: scale(1.1);
+}
+
+.timelineLampActive {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  border-color: rgba(255, 215, 0, 0.5);
+}
+
+.approachTimelineGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
 }
 
 .approachCard {
@@ -215,21 +329,46 @@
   border-radius: 0.5rem;
   padding: 2rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   border: 1px solid rgba(97, 218, 251, 0.1);
-  
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(97, 218, 251, 0.2);
-    border-color: rgba(97, 218, 251, 0.3);
-  }
+  width: 100%;
+  position: relative;
+}
+
+.approachCardActive {
+  box-shadow: 0 10px 25px rgba(97, 218, 251, 0.3);
+  border-color: rgba(97, 218, 251, 0.4);
+  transform: translateY(-5px);
+}
+
+.timelineArrow {
+  position: absolute;
+  font-size: 1.5rem;
+  color: #61dafb;
+  opacity: 0.6;
+}
+
+.approachCard1 .timelineArrow {
+  bottom: -3rem;
+  left: 50%;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+.approachCard2 .timelineArrow {
+  bottom: -3rem;
+  left: 50%;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+.approachCard3 .timelineArrow {
+  display: none;
 }
 
 .approachIcon {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 1.5rem;
-  padding: 0.8rem;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+  padding: 0.6rem;
   border-radius: 50%;
   background-color: rgba(97, 218, 251, 0.1);
   color: #61dafb;
@@ -239,27 +378,256 @@
 }
 
 .approachTitle {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   color: #ffffff;
   font-family: 'Fira Code', monospace;
 }
 
 .approachDescription {
   color: #a0aec0;
-  line-height: 1.6;
+  line-height: 1.5;
+  font-size: 1rem;
 }
 
-@media (max-width: 700px) {
-  .approachGrid {
-    gap: 1.2rem;
+.parallaxBg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(97, 218, 251, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 30%, rgba(86, 81, 229, 0.03) 0%, transparent 50%);
+  opacity: 0.7;
+  z-index: 1;
+}
+
+@media (max-width: 1380px) {
+  .approachTimelineGrid {
+    max-width: 75%;
   }
+  .timelineLine {
+    right: 0;
+  }
+}
+
+@media (max-width: 1200px) {
+  .approachTimelineGrid {
+    max-width: 80%;
+    padding: 0 2rem;
+  }
+  
+  .timelineLine {
+    right: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .approachTimelineGrid {
+    padding: 0 2rem;
+    gap: 5rem;
+  }
+  
+  .timelineLine {
+    right: 5%;
+  }
+  
   .approachCard {
-    padding: 1.5rem 1rem 1rem 1rem;
+    padding: 1.75rem;
+    width: 80%;
+    margin: 0 auto;
   }
+}
+
+@media (max-width: 768px) {
+  .approachSection {
+    padding: 3rem 0;
+  }
+  
   .sectionTitle {
-    font-size: 2.2rem;
+    font-size: 2rem;
     margin-bottom: 2.5rem;
+  }
+  
+  .approachTimelineGrid {
+    gap: 3.2rem;
+    padding: 0;
+    max-width: 100%;
+    align-items: center;
+    position: relative;
+  }
+  
+  .timelineWrapper {
+    min-height: 450px;
+    position: relative;
+  }
+  
+  /* Adjust vertical timeline for tablets */
+  .timelineLine {
+    position: absolute;
+    right: 0%;
+    transform: translateX(-50%);
+    top: 0;
+    bottom: -50px;
+    width: 3px;
+    height: calc(100%);
+    background-color: rgba(97, 218, 251, 0.2);
+    border-radius: 2px;
+    z-index: 5;
+  }
+  
+  .timelineProgress {
+    height: 0%;
+    background: linear-gradient(180deg, #61dafb 0%, #5651e5 60%, #FFD700 100%);
+    box-shadow: 0 0 15px rgba(97, 218, 251, 0.5);
+  }
+  
+  .timelineLamp {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -45px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(255, 215, 0, 0.6);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    background-color: rgba(10, 25, 41, 0.95);
+  }
+  
+  .timelineLampIcon {
+    font-size: 30px;
+    color: rgba(255, 215, 0, 0.7);
+  }
+  
+  .timelineLampActive .timelineLampIcon {
+    color: #FFD700;
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1));
+    transform: scale(1.1);
+  }
+  
+  /* Remove horizontal line */
+  .approachTimelineGrid::after {
+    display: none;
+  }
+  
+  .approachCard {
+    padding: 1.5rem;
+    width: 90%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    background-color: rgba(10, 25, 41, 0.95);
+    z-index: 20;
+    border: 1px solid rgba(97, 218, 251, 0.2);
+  }
+  
+  .approachCard::after {
+    display: none;
+  }
+  
+  .approachIcon {
+    width: 42px;
+    height: 42px;
+    padding: 0.5rem;
+    margin: 0 auto 1rem auto;
+  }
+  
+  .approachTitle {
+    font-size: 1.25rem;
+  }
+  
+  .approachDescription {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 600px) {
+  .approachTimelineGrid {
+    gap: 3.5rem;
+  }
+  
+  .approachCard {
+    width: 85%;
+    padding: 1.35rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .approachSection {
+    padding: 2.5rem 0;
+  }
+  
+  .sectionTitle {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  
+  .approachTimelineGrid {
+    gap: 3rem;
+  }
+  
+  .timelineLine, 
+  .timelineProgress,
+  .timelineLamp {
+    display: none;
+  }
+  
+  .approachCard {
+    width: 92%;
+    padding: 1.25rem;
+  }
+  
+  .approachIcon {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 0.75rem;
+  }
+  
+  .approachTitle {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .approachDescription {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 375px) {
+  .approachTimelineGrid {
+    gap: 3rem;
+  }
+  
+  .approachCard {
+    width: 92%;
+    padding: 1.1rem;
+  }
+  
+  .timelineLine {
+    width: 2px;
+  }
+  
+  .timelineLamp {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .timelineArrow {
+    font-size: 1rem;
+  }
+  
+  .approachIcon {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .approachTitle {
+    font-size: 1.05rem;
+  }
+  
+  .approachDescription {
+    font-size: 0.85rem;
   }
 } 

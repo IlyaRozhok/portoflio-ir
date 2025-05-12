@@ -2,6 +2,7 @@ import React from 'react';
 import HomePage from './pages/HomePage/HomePage';
 import Works from './pages/Works/Works';
 import ScrollContainer from './components/ScrollContainer/ScrollContainer';
+import Approach from './pages/Approach/Approach';
 
 function App() {
   return (

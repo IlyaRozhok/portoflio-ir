@@ -25,7 +25,6 @@ const HomePage: React.FC = () => {
   const [cursorVisible, setCursorVisible] = useState(true);
   const radialHighlightRef = useRef<HTMLDivElement>(null);
   const vignetteRef = useRef<HTMLDivElement>(null);
-  const titleBlockRef = useRef<HTMLDivElement>(null);
   const bioRef = useRef<HTMLDivElement>(null);
   const skillsRef = useRef<HTMLDivElement>(null);
   const techBarRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -303,12 +302,9 @@ const HomePage: React.FC = () => {
           </div>
         </section>
         
-        {/* Approach Section */}
-        <Approach />
 
-        {/* Works Section with Parallax Effect */}
-        <Works />
       </div>
+      <Approach />
     </div>
   );
 };
