@@ -9,9 +9,33 @@
   justify-content: space-between;
   align-items: center;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(15, 15, 25, 0.25);
   backdrop-filter: blur(10px);
   padding: 0 3rem;
+  transition: all 0.3s ease;
+  will-change: transform, opacity, background;
+  margin-top: 20px;
+  border-radius: 50px;
+  width: 90%;
+  max-width: 1400px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  &.scrolled {
+    background: rgba(15, 15, 25, 0.75);
+    margin-top: 15px;
+    height: 70px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  &:hover {
+    background: rgba(15, 15, 25, 0.5);
+    border-color: rgba(131, 68, 255, 0.2);
+    box-shadow: 0 15px 30px rgba(131, 68, 255, 0.15);
+  }
 }
 
 .logoWrap {
@@ -21,19 +45,25 @@
 }
 
 .logoBox {
-  background: #fff;
-  border-radius: 1.2rem;
-  padding: 0.4rem 1.1rem;
-  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.10);
+  background: linear-gradient(135deg, #9161e7 0%, #5551ff 100%);
+  border-radius: 1rem;
+  padding: 0.5rem 1.1rem;
+  box-shadow: 0 5px 15px rgba(85, 81, 255, 0.3);
   font-size: 1.1rem;
   font-weight: 800;
-  color: #18181b;
+  color: #fff;
   letter-spacing: 0.18em;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(85, 81, 255, 0.4);
+  }
 }
 
 .logoText {
   font-weight: 800;
-  color: #18181b;
+  color: #fff;
   font-size: 1.3rem;
   letter-spacing: 0.2em;
 }
@@ -42,7 +72,7 @@
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-size: 0.85rem;
-  color: #9ca3af;
+  color: #d1cfe2;
   font-weight: 700;
 }
 
@@ -56,20 +86,23 @@
 }
 
 .navLink {
-  font-size: 1.15rem;
+  font-size: 0.95rem;
   color: #fff;
   text-decoration: none;
-  font-weight: 400;
+  font-weight: 500;
   opacity: 0.7;
   transition: all 0.3s ease;
   height: 100%;
   display: flex;
   align-items: center;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   position: relative;
+  cursor: pointer;
+  letter-spacing: 0.05em;
 
   &:hover {
     opacity: 1;
+    transform: translateY(-2px);
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
   }
 }
@@ -81,20 +114,25 @@
   font-weight: 600;
   cursor: pointer;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
-               0 0 20px rgba(255, 255, 255, 0.7),
-               0 0 30px rgba(255, 255, 255, 0.7);
+    0 0 20px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 255, 255, 0.7);
   animation: logoPulse 3s infinite;
 }
 
 .activeLink {
   opacity: 1;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
-               0 0 20px rgba(255, 255, 255, 0.7);
+    0 0 20px rgba(255, 255, 255, 0.7);
 }
 
-.active {
-  color: #fff;
-  border-bottom: 2px solid #3b82f6;
+.indicator {
+  position: absolute;
+  bottom: 25px;
+  height: 3px;
+  background: linear-gradient(90deg, #9161e7 0%, #5551ff 100%);
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(145, 97, 231, 0.5);
+  will-change: transform, width;
+  transform-origin: left;
 }
 
 .progressContainer {
@@ -102,8 +140,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.1);
+  height: 3px;
+  background: rgba(255, 255, 255, 0.05);
   z-index: 101;
   overflow: hidden;
 }
@@ -113,22 +151,190 @@
   left: 0;
   top: 0;
   height: 100%;
-  background: #fff;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
-              0 0 20px rgba(255, 255, 255, 0.7);
+  background: linear-gradient(90deg, #9161e7 0%, #5551ff 100%);
+  box-shadow: 0 0 10px rgba(145, 97, 231, 0.5);
   will-change: width;
   transform: translateZ(0);
+  transition: width 0.1s linear;
+}
+
+.contactButton {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(90deg, #8344ff 0%, #5193ff 100%);
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin-left: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(131, 68, 255, 0.3);
+
+    &::before {
+      transform: translateX(100%);
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.contactIcon {
+  font-size: 1rem;
+}
+
+/* Mobile menu styles */
+.mobileMenuButton {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  cursor: pointer;
+  z-index: 102;
+
+  span {
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  &.open {
+    span:first-child {
+      transform: rotate(45deg) translate(7px, 7px);
+    }
+
+    span:nth-child(2) {
+      opacity: 0;
+    }
+
+    span:last-child {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70%;
+  height: 100vh;
+  background: rgba(15, 15, 25, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  transition: right 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+
+  &.open {
+    right: 0;
+  }
+}
+
+.mobileNavLink {
+  font-size: 1.8rem;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  padding: 1rem;
+  position: relative;
+  cursor: pointer;
+
+  &.activeLink {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
+      0 0 20px rgba(255, 255, 255, 0.7);
+  }
+
+  &:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  }
+}
+
+.mobileContactButton {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(90deg, #9161e7 0%, #5551ff 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.9rem 2rem;
+  margin-top: 1.5rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
 }
 
 @keyframes logoPulse {
-  0%, 100% {
+  0%,
+  100% {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
-                 0 0 20px rgba(255, 255, 255, 0.7),
-                 0 0 30px rgba(255, 255, 255, 0.7);
+      0 0 20px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 255, 255, 0.7);
   }
   50% {
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.9),
-                 0 0 25px rgba(255, 255, 255, 0.9),
-                 0 0 35px rgba(255, 255, 255, 0.9);
+      0 0 25px rgba(255, 255, 255, 0.9), 0 0 35px rgba(255, 255, 255, 0.9);
   }
-} 
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1100px) {
+  .header {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 0 1.5rem;
+    margin-top: 10px;
+    width: 95%;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .contactButton {
+    display: none;
+  }
+
+  .mobileMenuButton {
+    display: flex;
+  }
+}

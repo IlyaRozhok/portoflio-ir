@@ -2,11 +2,11 @@
   padding: 6rem 0;
   position: relative;
   overflow: hidden;
-  background-color: #1a1333;
+  background-color: transparent;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -17,15 +17,15 @@
   text-align: center;
   font-weight: 700;
   color: #ffffff;
-  
+
   .codeComment {
     color: #6c7a89;
-    font-family: 'Fira Code', monospace;
+    font-family: "Fira Code", monospace;
   }
-  
+
   .highlight {
     color: #61dafb; /* Match the code theme cyan */
-    font-family: 'Fira Code', monospace;
+    font-family: "Fira Code", monospace;
   }
 }
 
@@ -33,7 +33,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
-  
+
   @media (min-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -45,8 +45,8 @@
   padding: 2rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1.5px solid rgba(80, 70, 130, 0.20);
-  
+  border: 1.5px solid rgba(80, 70, 130, 0.2);
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
@@ -107,7 +107,11 @@
   width: 700px;
   height: 700px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(90,50,180,0.12) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(90, 50, 180, 0.12) 0%,
+    transparent 70%
+  );
   z-index: 0;
   filter: blur(2px);
 }
@@ -116,7 +120,12 @@
   pointer-events: none;
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(5,0,15,0.7) 0%, transparent 60%, rgba(5,0,15,0.7) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(5, 0, 15, 0.7) 0%,
+    transparent 60%,
+    rgba(5, 0, 15, 0.7) 100%
+  );
   z-index: 1;
   mix-blend-mode: multiply;
 }
@@ -206,12 +215,12 @@
   padding: 4rem 0;
   position: relative;
   overflow: hidden;
-  background-color: #0a121f;
-  background-image: radial-gradient(circle at 70% 20%, rgba(60, 100, 150, 0.08) 0%, transparent 70%);
+  background-color: transparent;
+  background-image: none;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 0 1.5rem;
   position: relative;
@@ -230,15 +239,15 @@
   text-align: center;
   font-weight: 700;
   color: #ffffff;
-  
+
   .codeComment {
     color: #6c7a89;
-    font-family: 'Fira Code', monospace;
+    font-family: "Fira Code", monospace;
   }
-  
+
   .highlight {
     color: #61dafb; /* Match the code theme cyan */
-    font-family: 'Fira Code', monospace;
+    font-family: "Fira Code", monospace;
   }
 }
 
@@ -272,7 +281,7 @@
   left: 0;
   width: 100%;
   height: 0%;
-  background: linear-gradient(180deg, #61dafb 0%, #5651e5 60%, #FFD700 100%);
+  background: linear-gradient(180deg, #61dafb 0%, #5651e5 60%, #ffd700 100%);
   border-radius: 2px;
   box-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
   z-index: 2;
@@ -303,7 +312,7 @@
 }
 
 .timelineLampActive .timelineLampIcon {
-  color: #FFD700;
+  color: #ffd700;
   filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
   transform: scale(1.1);
 }
@@ -382,7 +391,7 @@
   font-weight: 600;
   margin-bottom: 0.75rem;
   color: #ffffff;
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
 }
 
 .approachDescription {
@@ -394,9 +403,16 @@
 .parallaxBg {
   position: absolute;
   inset: 0;
-  background-image: 
-    radial-gradient(circle at 20% 80%, rgba(97, 218, 251, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 30%, rgba(86, 81, 229, 0.03) 0%, transparent 50%);
+  background-image: radial-gradient(
+      circle at 20% 80%,
+      rgba(97, 218, 251, 0.03) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(86, 81, 229, 0.03) 0%,
+      transparent 50%
+    );
   opacity: 0.7;
   z-index: 1;
 }
@@ -415,7 +431,7 @@
     max-width: 80%;
     padding: 0 2rem;
   }
-  
+
   .timelineLine {
     right: 0;
   }
@@ -426,11 +442,11 @@
     padding: 0 2rem;
     gap: 5rem;
   }
-  
+
   .timelineLine {
     right: 5%;
   }
-  
+
   .approachCard {
     padding: 1.75rem;
     width: 80%;
@@ -442,12 +458,12 @@
   .approachSection {
     padding: 3rem 0;
   }
-  
+
   .sectionTitle {
     font-size: 2rem;
     margin-bottom: 2.5rem;
   }
-  
+
   .approachTimelineGrid {
     gap: 3.2rem;
     padding: 0;
@@ -455,12 +471,12 @@
     align-items: center;
     position: relative;
   }
-  
+
   .timelineWrapper {
     min-height: 450px;
     position: relative;
   }
-  
+
   /* Adjust vertical timeline for tablets */
   .timelineLine {
     position: absolute;
@@ -474,13 +490,13 @@
     border-radius: 2px;
     z-index: 5;
   }
-  
+
   .timelineProgress {
     height: 0%;
-    background: linear-gradient(180deg, #61dafb 0%, #5651e5 60%, #FFD700 100%);
+    background: linear-gradient(180deg, #61dafb 0%, #5651e5 60%, #ffd700 100%);
     box-shadow: 0 0 15px rgba(97, 218, 251, 0.5);
   }
-  
+
   .timelineLamp {
     position: absolute;
     left: 50%;
@@ -492,23 +508,23 @@
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
     background-color: rgba(10, 25, 41, 0.95);
   }
-  
+
   .timelineLampIcon {
     font-size: 30px;
     color: rgba(255, 215, 0, 0.7);
   }
-  
+
   .timelineLampActive .timelineLampIcon {
-    color: #FFD700;
+    color: #ffd700;
     filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1));
     transform: scale(1.1);
   }
-  
+
   /* Remove horizontal line */
   .approachTimelineGrid::after {
     display: none;
   }
-  
+
   .approachCard {
     padding: 1.5rem;
     width: 90%;
@@ -520,22 +536,22 @@
     z-index: 20;
     border: 1px solid rgba(97, 218, 251, 0.2);
   }
-  
+
   .approachCard::after {
     display: none;
   }
-  
+
   .approachIcon {
     width: 42px;
     height: 42px;
     padding: 0.5rem;
     margin: 0 auto 1rem auto;
   }
-  
+
   .approachTitle {
     font-size: 1.25rem;
   }
-  
+
   .approachDescription {
     font-size: 0.95rem;
     line-height: 1.5;
@@ -546,7 +562,7 @@
   .approachTimelineGrid {
     gap: 3.5rem;
   }
-  
+
   .approachCard {
     width: 85%;
     padding: 1.35rem;
@@ -557,38 +573,38 @@
   .approachSection {
     padding: 2.5rem 0;
   }
-  
+
   .sectionTitle {
     font-size: 1.8rem;
     margin-bottom: 2rem;
   }
-  
+
   .approachTimelineGrid {
     gap: 3rem;
   }
-  
-  .timelineLine, 
+
+  .timelineLine,
   .timelineProgress,
   .timelineLamp {
     display: none;
   }
-  
+
   .approachCard {
     width: 92%;
     padding: 1.25rem;
   }
-  
+
   .approachIcon {
     width: 38px;
     height: 38px;
     margin-bottom: 0.75rem;
   }
-  
+
   .approachTitle {
     font-size: 1.15rem;
     margin-bottom: 0.5rem;
   }
-  
+
   .approachDescription {
     font-size: 0.9rem;
     line-height: 1.4;
@@ -599,35 +615,35 @@
   .approachTimelineGrid {
     gap: 3rem;
   }
-  
+
   .approachCard {
     width: 92%;
     padding: 1.1rem;
   }
-  
+
   .timelineLine {
     width: 2px;
   }
-  
+
   .timelineLamp {
     width: 45px;
     height: 45px;
   }
-  
+
   .timelineArrow {
     font-size: 1rem;
   }
-  
+
   .approachIcon {
     width: 35px;
     height: 35px;
   }
-  
+
   .approachTitle {
     font-size: 1.05rem;
   }
-  
+
   .approachDescription {
     font-size: 0.85rem;
   }
-} 
+}

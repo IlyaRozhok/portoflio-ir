@@ -1,8 +1,8 @@
-import { useEffect, useRef, ReactElement, useState } from 'react';
-import styles from './Approach.module.scss';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FaLightbulb, FaCode } from 'react-icons/fa';
+import { useEffect, useRef, ReactElement, useState } from "react";
+import styles from "./Approach.module.scss";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FaLightbulb, FaCode } from "react-icons/fa";
 import { IoRocketSharp } from "react-icons/io5";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -21,24 +21,31 @@ const Approach = () => {
   const lineRef = useRef<HTMLDivElement>(null);
   const lampRef = useRef<HTMLDivElement>(null);
   const [lampActive, setLampActive] = useState(false);
-  const [activeCards, setActiveCards] = useState<boolean[]>([false, false, false]);
+  const [activeCards, setActiveCards] = useState<boolean[]>([
+    false,
+    false,
+    false,
+  ]);
 
   const approachItems: ApproachItem[] = [
     {
       icon: <FaLightbulb size={32} />,
-      title: 'Planning',
-      description: 'I begin with thoughtful planning, understanding requirements and envisioning the ideal solution before writing any code.',
+      title: "Planning",
+      description:
+        "I begin with thoughtful planning, understanding requirements and envisioning the ideal solution before writing any code.",
     },
     {
       icon: <FaCode size={32} />,
-      title: 'Development',
-      description: 'During development, I implement clean, robust code with a focus on maintainability, performance, and best practices.',
+      title: "Development",
+      description:
+        "During development, I implement clean, robust code with a focus on maintainability, performance, and best practices.",
     },
     {
       //@ts-ignore
       icon: <IoRocketSharp size={32} />,
-      title: 'Launch',
-      description: 'The launch phase involves rigorous testing, optimization, and deployment to ensure a smooth, production-ready solution.',
+      title: "Launch",
+      description:
+        "The launch phase involves rigorous testing, optimization, and deployment to ensure a smooth, production-ready solution.",
     },
   ];
 
@@ -53,10 +60,10 @@ const Approach = () => {
           opacity: 1,
           y: 0,
           duration: 0.8,
-          ease: 'power2.out',
+          ease: "power2.out",
           scrollTrigger: {
             trigger: approachSection,
-            start: 'top 80%',
+            start: "top 80%",
           },
         }
       );
@@ -68,23 +75,23 @@ const Approach = () => {
         scrollTrigger: {
           trigger: timelineRef.current,
           start: "top 80%",
-          end: "center 20%", 
+          end: "center 20%",
           scrub: 0.5,
           onUpdate: (self) => {
             // Calculate which cards should be active based on progress
             const progress = self.progress;
-            
+
             // Only light the lamp at 100% completion
             if (progress >= 0.99) {
               setLampActive(true);
             } else {
               setLampActive(false);
             }
-            
+
             // Update card highlighting with a cumulative effect
             // Once highlighted, cards stay highlighted
             const newActiveCards = [...activeCards];
-            
+
             if (progress >= 0.85) {
               newActiveCards[0] = true;
               newActiveCards[1] = true;
@@ -95,16 +102,16 @@ const Approach = () => {
             } else if (progress >= 0.15) {
               newActiveCards[0] = true;
             }
-            
+
             setActiveCards(newActiveCards);
-          }
-        }
+          },
+        },
       });
-      
+
       timeline.to(lineRef.current, {
         height: "100%",
         duration: 0.7,
-        ease: "power1.in"
+        ease: "power1.in",
       });
     }
 
@@ -113,10 +120,10 @@ const Approach = () => {
       approachItemsRef.current.forEach((item, index) => {
         gsap.fromTo(
           item,
-          { 
-            opacity: 0, 
+          {
+            opacity: 0,
             x: index % 2 === 0 ? -20 : 20,
-            y: 20
+            y: 20,
           },
           {
             opacity: 1,
@@ -124,10 +131,10 @@ const Approach = () => {
             y: 0,
             duration: 0.6,
             delay: 0.1 + index * 0.1,
-            ease: 'power2.out',
+            ease: "power2.out",
             scrollTrigger: {
               trigger: item,
-              start: 'top 90%',
+              start: "top 90%",
             },
           }
         );
@@ -135,7 +142,7 @@ const Approach = () => {
     }
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
@@ -143,17 +150,23 @@ const Approach = () => {
     <section className={styles.approachSection} id="approach" ref={approachRef}>
       <div className={`${styles.container} ${styles.timelineContainer}`}>
         <h2 className={styles.sectionTitle}>
-          <span className={styles.codeComment}>// My</span> <span className={styles.highlight}>Approach</span>
+          <span className={styles.codeComment}>// My</span>{" "}
+          <span className={styles.highlight}>Approach</span>
         </h2>
-        
+
         <div className={styles.timelineWrapper} ref={timelineWrapperRef}>
           <div className={styles.timelineLine} ref={timelineRef}>
             <div className={styles.timelineProgress} ref={lineRef}></div>
-            <div className={`${styles.timelineLamp} ${lampActive ? styles.timelineLampActive : ''}`} ref={lampRef}>
+            <div
+              className={`${styles.timelineLamp} ${
+                lampActive ? styles.timelineLampActive : ""
+              }`}
+              ref={lampRef}
+            >
               <FaLightbulb className={styles.timelineLampIcon} />
             </div>
           </div>
-          
+
           <div className={styles.approachTimelineGrid}>
             {approachItems.map((item, index) => (
               <div
@@ -161,7 +174,7 @@ const Approach = () => {
                 className={`
                   ${styles.approachCard} 
                   ${styles[`approachCard${index + 1}`]}
-                  ${activeCards[index] ? styles.approachCardActive : ''}
+                  ${activeCards[index] ? styles.approachCardActive : ""}
                 `}
                 ref={(el) => {
                   if (el) approachItemsRef.current[index] = el;
@@ -178,10 +191,10 @@ const Approach = () => {
           </div>
         </div>
       </div>
-      
+
       <div className={styles.parallaxBg}></div>
     </section>
   );
 };
 
-export default Approach; 
+export default Approach;
