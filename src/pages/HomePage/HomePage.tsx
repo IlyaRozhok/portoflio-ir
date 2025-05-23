@@ -101,8 +101,12 @@ const HomePage: React.FC<HomePageProps> = ({ onContactClick, displayForm }) => {
 
       <main className={styles.mainContent}>
         <div className={styles.heroTextContainer}>
-          <div className={styles.titleBorder}>
-            <h1 className={styles.pageTitle}>WEBSITE DEVELOPMENT</h1>
+          <div className={styles.modernTitleContainer}>
+            <h1 className={styles.modernTitle}>
+              <span className={styles.titleLine}>WEBSITE</span>
+              <span className={styles.titleLine}>DEVELOPMENT</span>
+            </h1>
+            <div className={styles.titleAccent}></div>
           </div>
           <p className={styles.codeComment}>
             // Hi all. My name is Illia Rozhok. I am

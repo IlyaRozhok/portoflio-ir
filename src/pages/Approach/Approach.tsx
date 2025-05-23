@@ -20,7 +20,7 @@ const Approach = () => {
   const timelineRef = useRef<HTMLDivElement>(null);
   const approachItemsRef = useRef<HTMLDivElement[]>([]);
   const lineRef = useRef<HTMLDivElement>(null);
-  const lampRef = useRef<HTMLDivElement>(null);
+  // const lampRef = useRef<HTMLDivElement>(null);
   const [lampActive, setLampActive] = useState(false);
   const [activeCards, setActiveCards] = useState<boolean[]>([
     false,
@@ -71,7 +71,7 @@ const Approach = () => {
     }
 
     // Animation for the connecting line and lamp
-    if (timelineRef.current && lineRef.current && lampRef.current) {
+    if (timelineRef.current) {
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: timelineRef.current,
@@ -114,26 +114,26 @@ const Approach = () => {
     }
 
     // Animation for approach items - only opacity, as transform is handled by CSS
-    if (approachItemsRef.current.length > 0) {
-      approachItemsRef.current.forEach((item, index) => {
-        gsap.fromTo(
-          item,
-          { opacity: 0, y: 20 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            delay: 0.2 + index * 0.15,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: item,
-              start: "top 90%",
-              once: true,
-            },
-          }
-        );
-      });
-    }
+    // if (approachItemsRef.current.length > 0) {
+    //   approachItemsRef.current.forEach((item, index) => {
+    //     gsap.fromTo(
+    //       item,
+    //       { opacity: 0, y: 20 },
+    //       {
+    //         opacity: 1,
+    //         y: 0,
+    //         duration: 0.6,
+    //         delay: 0.2 + index * 0.15,
+    //         ease: "power2.out",
+    //         scrollTrigger: {
+    //           trigger: item,
+    //           start: "top 90%",
+    //           once: true,
+    //         },
+    //       }
+    //     );
+    //   });
+    // }
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -148,14 +148,6 @@ const Approach = () => {
         <div className={styles.timelineWrapper} ref={timelineWrapperRef}>
           <div className={styles.timelineLine} ref={timelineRef}>
             <div className={styles.timelineProgress} ref={lineRef}></div>
-            <div
-              className={`${styles.timelineLamp} ${
-                lampActive ? styles.timelineLampActive : ""
-              }`}
-              ref={lampRef}
-            >
-              <FaLightbulb className={styles.timelineLampIcon} />
-            </div>
           </div>
 
           <div className={styles.approachTimelineGrid}>
