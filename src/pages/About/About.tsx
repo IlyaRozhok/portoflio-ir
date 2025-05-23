@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./About.module.scss";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -93,8 +94,8 @@ const About: React.FC = () => {
       id="about"
       ref={sectionRef}
     >
+      <SectionTitle basicTitle="About" highlightTitle="me" />
       <div className={styles.sectionConnector}></div>
-      <h2 className={styles.highlight}>About Me</h2>
 
       <div className={styles.contentContainer}>
         <div className={styles.bioContainer} ref={bioRef}>

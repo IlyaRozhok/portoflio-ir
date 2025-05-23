@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaLightbulb, FaCode } from "react-icons/fa";
 import { IoRocketSharp } from "react-icons/io5";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,23 +76,12 @@ const Approach = () => {
         scrollTrigger: {
           trigger: timelineRef.current,
           start: "top 80%",
-          end: "center 20%",
+          end: "center 30%",
           scrub: 0.5,
           onUpdate: (self) => {
-            // Calculate which cards should be active based on progress
             const progress = self.progress;
 
-            // Only light the lamp at 100% completion
-            if (progress >= 0.99) {
-              setLampActive(true);
-            } else {
-              setLampActive(false);
-            }
-
-            // Update card highlighting with a cumulative effect
-            // Once highlighted, cards stay highlighted
-            const newActiveCards = [...activeCards];
-
+            const newActiveCards = [false, false, false];
             if (progress >= 0.85) {
               newActiveCards[0] = true;
               newActiveCards[1] = true;
@@ -103,7 +93,15 @@ const Approach = () => {
               newActiveCards[0] = true;
             }
 
-            setActiveCards(newActiveCards);
+            setActiveCards((prevActiveCards) => {
+              if (
+                JSON.stringify(prevActiveCards) !==
+                JSON.stringify(newActiveCards)
+              ) {
+                return newActiveCards;
+              }
+              return prevActiveCards;
+            });
           },
         },
       });
@@ -111,30 +109,26 @@ const Approach = () => {
       timeline.to(lineRef.current, {
         height: "100%",
         duration: 0.7,
-        ease: "power1.in",
+        ease: "power1.inOut",
       });
     }
 
-    // Animation for approach items with stagger
+    // Animation for approach items - only opacity, as transform is handled by CSS
     if (approachItemsRef.current.length > 0) {
       approachItemsRef.current.forEach((item, index) => {
         gsap.fromTo(
           item,
-          {
-            opacity: 0,
-            x: index % 2 === 0 ? -20 : 20,
-            y: 20,
-          },
+          { opacity: 0, y: 20 },
           {
             opacity: 1,
-            x: 0,
             y: 0,
             duration: 0.6,
-            delay: 0.1 + index * 0.1,
+            delay: 0.2 + index * 0.15,
             ease: "power2.out",
             scrollTrigger: {
               trigger: item,
               start: "top 90%",
+              once: true,
             },
           }
         );
@@ -149,10 +143,7 @@ const Approach = () => {
   return (
     <section className={styles.approachSection} id="approach" ref={approachRef}>
       <div className={`${styles.container} ${styles.timelineContainer}`}>
-        <h2 className={styles.sectionTitle}>
-          <span className={styles.codeComment}>// My</span>{" "}
-          <span className={styles.highlight}>Approach</span>
-        </h2>
+        <SectionTitle basicTitle="My" highlightTitle="Approach" />
 
         <div className={styles.timelineWrapper} ref={timelineWrapperRef}>
           <div className={styles.timelineLine} ref={timelineRef}>

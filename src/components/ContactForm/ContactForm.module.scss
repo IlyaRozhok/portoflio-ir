@@ -1,17 +1,89 @@
-.formContainer {
-  width: 100%;
+// Modal Overlay and Content
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeInOverlay 0.3s ease-out;
+}
+
+.modalContent {
+  position: relative;
   max-width: 550px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideInModal 0.4s ease-out;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInModal {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.formContainer {
+  max-width: 600px;
   margin: 0 auto;
   background: rgba(15, 15, 25, 0.75);
   backdrop-filter: blur(12px);
   border-radius: 16px;
-  padding: 2.5rem;
+  padding: 3.5rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
   }
 }
@@ -169,11 +241,28 @@
 }
 
 @media (max-width: 768px) {
+  .modalOverlay {
+    padding: 0.5rem;
+  }
+
+  .modalContent {
+    max-height: 95vh;
+  }
+
   .formContainer {
     padding: 1.5rem;
+    margin: 0;
   }
 
   .formTitle {
     font-size: 1.75rem;
+  }
+
+  .closeButton {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    top: 0.75rem;
+    right: 0.75rem;
   }
 }

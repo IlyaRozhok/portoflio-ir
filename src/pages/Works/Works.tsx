@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./Works.module.scss";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import moodern from "../../assets/img/moodern.png";
 import portfolio1 from "../../assets/img/portfolio1.png";
 import webAgency from "../../assets/img/web-agency.png";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,6 +18,19 @@ interface WorkItem {
   githubUrl?: string;
   liveUrl?: string;
 }
+
+// Simple SVG Icons as components
+const CodeIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M8 6.82l-5.38 5.38 5.38 5.38 1.41-1.41-3.97-3.97 3.97-3.97-1.41-1.41zm8 10.56l5.38-5.38-5.38-5.38-1.41 1.41 3.97 3.97-3.97 3.97 1.41 1.41z" />
+  </svg>
+);
+
+const ExternalLinkIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
+  </svg>
+);
 
 const Works = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -35,7 +49,7 @@ const Works = () => {
     },
     {
       id: "project2",
-      title: "Interior design studio",
+      title: "Design studio",
       description: "Commercial and private interiors",
       tech: ["React", "email.js", "SCSS"],
       imageUrl: moodern,
@@ -106,17 +120,12 @@ const Works = () => {
 
   return (
     <section className={styles.worksSection} id="works" ref={sectionRef}>
-      <div className={styles.neonGlow}></div>
-
       <div className={styles.container}>
-        <h2 className={styles.sectionTitle}>
-          <span className={styles.codeComment}>// My</span>{" "}
-          <span className={styles.highlight}>Projects</span>
-        </h2>
+        <SectionTitle basicTitle="My" highlightTitle="Projects" />
 
         <div className={styles.worksContainer} ref={worksRef}>
           {works.map((work, index) => (
-            <div key={work.id} className={`${styles.workItem}`}>
+            <div key={work.id} className={styles.workItem}>
               <div className={styles.workImageWrapper}>
                 <img
                   src={work.imageUrl}
@@ -132,12 +141,10 @@ const Works = () => {
                         className={styles.workLink}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="View source code"
                       >
-                        <span className={styles.constKeyword}>const</span>
-                        <span className={styles.variableName}> source </span>
-                        <span className={styles.operator}>= </span>
-                        <span className={styles.stringValue}>"View Code"</span>
-                        <span className={styles.semicolon}>;</span>
+                        <CodeIcon />
+                        <span>View Source</span>
                       </a>
                     )}
                     {work.liveUrl && (
@@ -146,12 +153,10 @@ const Works = () => {
                         className={styles.workLink}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="View live demo"
                       >
-                        <span className={styles.constKeyword}>const</span>
-                        <span className={styles.variableName}> demo </span>
-                        <span className={styles.operator}>= </span>
-                        <span className={styles.stringValue}>"Live Demo"</span>
-                        <span className={styles.semicolon}>;</span>
+                        <ExternalLinkIcon />
+                        <span>Live Demo</span>
                       </a>
                     )}
                   </div>
@@ -162,7 +167,7 @@ const Works = () => {
                 <div className={styles.techStack}>
                   {work.tech.map((tech, i) => (
                     <span key={i} className={styles.techTag}>
-                      <span className={styles.tagImport}>import</span> {tech}
+                      {tech}
                     </span>
                   ))}
                 </div>

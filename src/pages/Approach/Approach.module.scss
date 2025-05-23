@@ -140,16 +140,16 @@
   height: 0;
   z-index: 1;
   pointer-events: none;
-  display: flex;
+  display: none !important;
   justify-content: center;
 }
 
 .featuresLinkLine {
   position: relative;
   width: 80%;
-  height: 6px;
-  background: #2a2042;
-  border-radius: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1.5px;
   overflow: hidden;
   z-index: 1;
 }
@@ -160,10 +160,10 @@
   top: 0;
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #9161e7 0%, #585bfc 100%);
-  box-shadow: 0 0 8px #7c52e088;
-  border-radius: 3px;
-  transition: width 0.3s;
+  background: linear-gradient(90deg, #61dafb 0%, #7f00ff 50%, #585bfc 100%);
+  box-shadow: 0 0 12px 3px rgba(100, 100, 255, 0.35);
+  border-radius: 1.5px;
+  transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
   z-index: 2;
 }
 
@@ -266,11 +266,11 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  right: -3%;
+  right: 2rem;
   transform: none;
   width: 3px;
   height: 100%;
-  background-color: rgba(97, 218, 251, 0.1);
+  background-color: rgba(97, 218, 251, 0.25);
   border-radius: 2px;
   z-index: 1;
 }
@@ -334,20 +334,67 @@
 }
 
 .approachCard {
-  background-color: rgba(10, 25, 41, 0.7);
-  border-radius: 0.5rem;
-  padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  border: 1px solid rgba(97, 218, 251, 0.1);
-  width: 100%;
+  background: linear-gradient(
+    145deg,
+    rgba(30, 20, 50, 0.95),
+    rgba(40, 30, 60, 0.95)
+  );
+  border-radius: 1rem;
+  padding: 2.5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background 0.4s ease;
+  border: 1px solid rgba(120, 100, 180, 0.3);
   position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(
+      145deg,
+      rgba(40, 30, 70, 0.98),
+      rgba(50, 40, 80, 0.98)
+    );
+  }
+
+  .approachIcon {
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+    color: #9161e7;
+  }
+
+  &:hover .approachIcon {
+    transform: scale(1.1);
+  }
 }
 
 .approachCardActive {
-  box-shadow: 0 10px 25px rgba(97, 218, 251, 0.3);
-  border-color: rgba(97, 218, 251, 0.4);
-  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(145, 97, 231, 0.6), 0 8px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(145, 97, 231, 0.8);
+  background: linear-gradient(
+    145deg,
+    rgba(50, 40, 90, 0.98),
+    rgba(60, 50, 100, 0.98)
+  );
+
+  animation: flipInX 0.8s ease forwards;
+
+  .approachIcon {
+    color: #a170ff;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes flipInX {
+  from {
+    transform: perspective(400px) rotateX(90deg);
+    opacity: 0;
+  }
+  to {
+    transform: perspective(400px) rotateX(0deg);
+    opacity: 1;
+  }
 }
 
 .timelineArrow {
@@ -374,16 +421,16 @@
 }
 
 .approachIcon {
-  width: 48px;
-  height: 48px;
-  margin-bottom: 1rem;
-  padding: 0.6rem;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1.5rem;
+  padding: 0.8rem;
   border-radius: 50%;
-  background-color: rgba(97, 218, 251, 0.1);
-  color: #61dafb;
+  color: #9161e7;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .approachTitle {
@@ -422,7 +469,7 @@
     max-width: 75%;
   }
   .timelineLine {
-    right: 0;
+    right: 2rem;
   }
 }
 
@@ -433,7 +480,7 @@
   }
 
   .timelineLine {
-    right: 0;
+    right: 2rem;
   }
 }
 
@@ -444,7 +491,7 @@
   }
 
   .timelineLine {
-    right: 5%;
+    right: 2rem;
   }
 
   .approachCard {
@@ -477,16 +524,16 @@
     position: relative;
   }
 
-  /* Adjust vertical timeline for tablets */
   .timelineLine {
     position: absolute;
-    right: 0%;
-    transform: translateX(-50%);
+    right: 1rem;
+    left: auto;
+    transform: none;
     top: 0;
     bottom: -50px;
     width: 3px;
     height: calc(100%);
-    background-color: rgba(97, 218, 251, 0.2);
+    background-color: rgba(97, 218, 251, 0.25);
     border-radius: 2px;
     z-index: 5;
   }
@@ -520,7 +567,6 @@
     transform: scale(1.1);
   }
 
-  /* Remove horizontal line */
   .approachTimelineGrid::after {
     display: none;
   }
