@@ -93,7 +93,9 @@
   letter-spacing: 0.2em;
   margin-bottom: 1rem;
 }
-
+.heroTextContainer {
+  padding: 0 1rem;
+}
 .mainContent {
   flex: 1;
   display: flex;
@@ -103,6 +105,10 @@
   padding: 0 2rem;
   @media (max-width: 1024px) {
     padding-top: 90px;
+  }
+  @media (max-width: 480px) {
+    display: block;
+    padding: 90px 0 0 0;
   }
 }
 
@@ -1058,6 +1064,9 @@
   font-size: 1rem;
   line-height: 1.5rem;
   color: #e2e8f0;
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 }
 
 .commentLine {
@@ -1104,6 +1113,11 @@
   margin: 0 auto;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  @media (max-width: 480px) {
+    width: 85%;
+    padding: 1rem 1rem;
+    height: 33px;
+  }
 }
 
 .headerContent {
