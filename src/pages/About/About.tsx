@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./About.module.scss";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
+import GlowingText from "../../components/GlowingText/GlowingText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -100,9 +101,9 @@ const About: React.FC = () => {
       <div className={styles.contentContainer}>
         <div className={styles.bioContainer} ref={bioRef}>
           <div className={styles.bioContent}>
-            <h3 className={styles.bioTitle}>
-              Transforming Ideas Into Powerful Solutions
-            </h3>
+            <h2 className={styles.aboutTitle}>
+              <GlowingText text="About Me" />
+            </h2>
             <p className={styles.bioText}>
               As a passionate Fullstack Developer, I blend creativity with
               technical expertise to build seamless digital experiences. My

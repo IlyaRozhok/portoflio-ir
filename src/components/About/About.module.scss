@@ -1,0 +1,137 @@
+.aboutSection {
+  position: relative;
+  padding: 6rem 0 2rem 0;
+  background: linear-gradient(
+    deg,
+    rgba(21, 168, 179, 0.74) 20%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  color: #ffffff;
+}
+
+.aboutContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #ffffff 0%, #9161e7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.aboutContentWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.aboutTextContent {
+  .aboutText {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: #e2e8f0;
+  }
+}
+
+.skillBars {
+  margin-top: 3rem;
+
+  .skillsTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+  }
+}
+
+.skillBar {
+  margin-bottom: 1.5rem;
+
+  .skillBarLabel {
+    font-size: 1rem;
+    color: #e2e8f0;
+    margin-bottom: 0.5rem;
+  }
+
+  .skillBarOuter {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .skillBarInner {
+    height: 100%;
+    background: linear-gradient(90deg, #9161e7, #5551ff);
+    border-radius: 4px;
+    transition: width 1s ease-in-out;
+  }
+
+  .skillBarPercent {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-top: 0.25rem;
+    text-align: right;
+  }
+}
+
+.servicesContainer {
+  .servicesTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #ffffff;
+  }
+}
+
+.servicesList {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.serviceCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .serviceIcon {
+    font-size: 2rem;
+    color: #9161e7;
+    margin-bottom: 1rem;
+  }
+
+  .serviceTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+
+  .serviceDesc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+  }
+}

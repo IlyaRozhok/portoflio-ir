@@ -1,0 +1,32 @@
+.footer {
+  background: #120d24;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.footerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.contactButton {
+  background: linear-gradient(90deg, #9161e7 0%, #585bfc 100%);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(112, 72, 232, 0.3);
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(112, 72, 232, 0.5);
+  }
+}

@@ -20,8 +20,6 @@ const Approach = () => {
   const timelineRef = useRef<HTMLDivElement>(null);
   const approachItemsRef = useRef<HTMLDivElement[]>([]);
   const lineRef = useRef<HTMLDivElement>(null);
-  // const lampRef = useRef<HTMLDivElement>(null);
-  const [lampActive, setLampActive] = useState(false);
   const [activeCards, setActiveCards] = useState<boolean[]>([
     false,
     false,

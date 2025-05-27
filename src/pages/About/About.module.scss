@@ -1,6 +1,6 @@
 .aboutBg {
   position: relative;
-  background: linear-gradient(180deg, #120d24 0%, #0c071c 100%);
+  background: linear-gradient(180deg, #120d24 0%, #1a0b49 100%);
   box-shadow: 0 0 120px 0 rgba(59, 130, 246, 0.08) inset;
   overflow: hidden;
   margin-top: -2rem;
@@ -39,6 +39,11 @@
   background: linear-gradient(180deg, transparent, #120d24);
   z-index: 1;
   pointer-events: none;
+  transition: background 0.5s ease;
+}
+
+.sectionConnector:hover {
+  background: linear-gradient(180deg, transparent, #1a1a2e);
 }
 
 .aboutSection {
@@ -49,6 +54,7 @@
   align-items: center;
   position: relative;
   z-index: 2;
+  border-radius: 50px;
 }
 
 .sectionTitle {
@@ -207,5 +213,48 @@
     color: var(--neon-cyan);
     font-family: "Fira Code", monospace;
     text-shadow: 0 0 5px var(--neon-cyan), 0 0 10px rgba(0, 229, 255, 0.4);
+  }
+}
+
+.aboutTitle {
+  font-size: 55px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: white;
+  animation: glowing 1.5s ease-in-out infinite,
+    colorChange 2s ease-in-out infinite;
+}
+
+@keyframes glowing {
+  0% {
+    filter: drop-shadow(0 0 5px #34d399)
+      drop-shadow(0 0 10px rgba(172, 255, 108, 0.3294117647));
+    opacity: 1;
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5215686275))
+      drop-shadow(0 0 30px rgba(255, 255, 255, 0.0431372549));
+    opacity: 1;
+  }
+  100% {
+    filter: drop-shadow(0 0 5px #06ed98)
+      drop-shadow(0 0 10px rgba(172, 255, 108, 0.3294117647));
+    opacity: 1;
+  }
+}
+
+@keyframes colorChange {
+  0% {
+    color: #34d399;
+  }
+  33% {
+    color: #ffffff;
+  }
+  66% {
+    color: #9161e7;
+  }
+  100% {
+    color: #34d399;
   }
 }

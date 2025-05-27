@@ -3,6 +3,7 @@ import gsap from "gsap";
 import HomePage from "./pages/HomePage/HomePage";
 import Works from "./pages/Works/Works";
 import Approach from "./pages/Approach/Approach";
+import About from "./components/About/About";
 import ContactForm from "./components/ContactForm/ContactForm";
 import InteractiveBackground from "./components/InteractiveBackground/InteractiveBackground";
 
@@ -57,6 +58,10 @@ function App() {
 
         <section id="home">
           <HomePage onContactClick={handleContactClick} />
+        </section>
+
+        <section id="about">
+          <About />
         </section>
 
         <section id="approach">

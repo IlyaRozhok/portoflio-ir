@@ -1,0 +1,62 @@
+.glowingText span {
+  display: inline-block;
+  font-size: 75px;
+  font-weight: bold;
+  color: white;
+  animation: glowing 1.5s ease-in-out infinite,
+    colorChange 2s ease-in-out infinite;
+  @media (max-width: 1024px) {
+    font-size: 4rem;
+  }
+  @media (max-width: 810px) {
+    font-size: 3rem;
+  }
+  @media (max-width: 630px) {
+    font-size: 2.5rem;
+  }
+  @media (max-width: 540px) {
+    font-size: 2.2rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 2.1rem;
+  }
+  @media (max-width: 455px) {
+    font-size: 2rem;
+  }
+  @media (max-width: 437px) {
+    font-size: 1.7rem;
+  }
+}
+
+@keyframes glowing {
+  0% {
+    filter: drop-shadow(0 0 5px #34d399)
+      drop-shadow(0 0 10px rgba(172, 255, 108, 0.3294117647));
+    opacity: 1;
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5215686275))
+      drop-shadow(0 0 30px rgba(255, 255, 255, 0.0431372549));
+    opacity: 1;
+  }
+  100% {
+    filter: drop-shadow(0 0 5px #06ed98)
+      drop-shadow(0 0 10px rgba(172, 255, 108, 0.3294117647));
+    opacity: 1;
+  }
+}
+
+@keyframes colorChange {
+  0% {
+    color: #34d399;
+  }
+  33% {
+    color: #92d5ed;
+  }
+  66% {
+    color: #34d399;
+  }
+  100% {
+    color: #34d399;
+  }
+}

@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./HomePage.module.scss";
-import { FaCode, FaMobile, FaLightbulb } from "react-icons/fa";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import type { IconType } from "react-icons";
-import profileImage from "../../assets/img/about.png";
+import profileImage from "../../assets/img/photo.jpg";
 import ContactForm from "../../components/ContactForm/ContactForm";
+import GlowingText from "../../components/GlowingText/GlowingText";
 
 // Tech stack icons and labels
 const technologies = [
@@ -54,11 +54,6 @@ const HomePage: React.FC<HomePageProps> = ({ onContactClick, displayForm }) => {
 
   return (
     <div className={styles.homeWrapper}>
-      {/* Rich Background Layers */}
-
-      {/* Vignette Overlay */}
-      {/* <div className={styles.vignette}></div> */}
-
       <header className={styles.animatedHeader}>
         <div className={styles.headerContent}>
           <div className={styles.socialIconsContainer}>
@@ -101,13 +96,9 @@ const HomePage: React.FC<HomePageProps> = ({ onContactClick, displayForm }) => {
 
       <main className={styles.mainContent}>
         <div className={styles.heroTextContainer}>
-          <div className={styles.modernTitleContainer}>
-            <h1 className={styles.modernTitle}>
-              <span className={styles.titleLine}>WEBSITE</span>
-              <span className={styles.titleLine}>DEVELOPMENT</span>
-            </h1>
-            <div className={styles.titleAccent}></div>
-          </div>
+          <h1 className={styles.heroTitle}>
+            <GlowingText text="Website Development" />
+          </h1>
           <p className={styles.codeComment}>
             // Hi all. My name is Illia Rozhok. I am
           </p>
@@ -133,7 +124,6 @@ const HomePage: React.FC<HomePageProps> = ({ onContactClick, displayForm }) => {
                 className={styles.dot}
                 style={{ background: "#28C840" }}
               ></span>
-              <span className={styles.profileFileName}>profile.jpeg</span>
             </div>
             <img
               src={profileImage}
@@ -171,89 +161,9 @@ const HomePage: React.FC<HomePageProps> = ({ onContactClick, displayForm }) => {
         </div>
       </main>
 
-      {/* Section Connector for seamless transition */}
-      <div className={styles.sectionConnector}></div>
-
-      {/* About Me Section */}
-      <section className={styles.aboutSection}>
-        <div className={styles.aboutContainer}>
-          <h2 className={styles.sectionTitle}>About Me</h2>
-          <div className={styles.aboutContentWrapper}>
-            <div className={styles.aboutTextContent}>
-              <p className={styles.aboutText}>
-                I'm a passionate full-stack developer with expertise in creating
-                modern, responsive, and user-friendly web applications. With a
-                strong foundation in both front-end and back-end technologies, I
-                specialize in building seamless digital experiences that combine
-                beautiful interfaces with robust functionality.
-              </p>
-              <p className={styles.aboutText}>
-                My approach to development is focused on creating clean,
-                maintainable code that delivers exceptional performance and user
-                experience. I'm constantly learning new technologies and
-                methodologies to stay at the forefront of web development.
-              </p>
-
-              <div className={styles.skillBars}>
-                <h3 className={styles.skillsTitle}>Technical Skills</h3>
-                {technologies.map((tech, index) => (
-                  <div key={tech.name} className={styles.skillBar}>
-                    <div className={styles.skillBarLabel}>{tech.name}</div>
-                    <div className={styles.skillBarOuter}>
-                      <div
-                        className={styles.skillBarInner}
-                        style={{ width: `${tech.level}%` }}
-                      ></div>
-                    </div>
-                    <div className={styles.skillBarPercent}>{tech.level}%</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className={styles.servicesContainer}>
-              <h3 className={styles.servicesTitle}>Services I Offer</h3>
-              <div className={styles.servicesList}>
-                <div className={styles.serviceCard}>
-                  <div className={styles.serviceIcon}>
-                    <FaCode />
-                  </div>
-                  <h4 className={styles.serviceTitle}>Web Development</h4>
-                  <p className={styles.serviceDesc}>
-                    Creating modern, responsive websites and web applications
-                    using the latest technologies.
-                  </p>
-                </div>
-
-                <div className={styles.serviceCard}>
-                  <div className={styles.serviceIcon}>
-                    <FaMobile />
-                  </div>
-                  <h4 className={styles.serviceTitle}>Mobile-First Design</h4>
-                  <p className={styles.serviceDesc}>
-                    Building applications that work flawlessly across all
-                    devices and screen sizes.
-                  </p>
-                </div>
-
-                <div className={styles.serviceCard}>
-                  <div className={styles.serviceIcon}>
-                    <FaLightbulb />
-                  </div>
-                  <h4 className={styles.serviceTitle}>Technical Consulting</h4>
-                  <p className={styles.serviceDesc}>
-                    Providing expert advice on technology stack selection and
-                    architecture.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Modal */}
-      <ContactForm isOpen={isContactModalOpen} onClose={handleCloseModal} />
+      {isContactModalOpen && (
+        <ContactForm isOpen={isContactModalOpen} onClose={handleCloseModal} />
+      )}
     </div>
   );
 };

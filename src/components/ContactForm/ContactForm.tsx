@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import emailjs from "@emailjs/browser";
 import styles from "./ContactForm.module.scss";
 
 interface ContactFormProps {
@@ -16,6 +17,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ isOpen, onClose }) => {
   const [formStatus, setFormStatus] = useState<null | "success" | "error">(
     null
   );
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -52,17 +54,27 @@ const ContactForm: React.FC<ContactFormProps> = ({ isOpen, onClose }) => {
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setFormStatus(null);
 
     // Form validation
     if (!formState.name || !formState.email || !formState.message) {
       setFormStatus("error");
+      setIsSubmitting(false);
       return;
     }
 
-    // Simulating form submission - in a real scenario you would send the data to a server
-    setTimeout(() => {
+    try {
+      // Replace these with your actual EmailJS credentials
+      await emailjs.sendForm(
+        "service_1vnpyld",
+        "portfolio-template",
+        formRef.current!,
+        "oypc-KiXUrhpv25lH"
+      );
+
       setFormStatus("success");
       setFormState({ name: "", email: "", message: "" });
 
@@ -71,7 +83,12 @@ const ContactForm: React.FC<ContactFormProps> = ({ isOpen, onClose }) => {
         setFormStatus(null);
         onClose();
       }, 3000);
-    }, 1000);
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setFormStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -109,7 +126,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ isOpen, onClose }) => {
           {formStatus === "error" && (
             <div className={styles.formError}>
               <div className={styles.errorIcon}>!</div>
-              <p>Please fill out all fields before submitting.</p>
+              <p>There was an error sending your message. Please try again.</p>
             </div>
           )}
 
@@ -131,6 +148,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ isOpen, onClose }) => {
                   onChange={handleChange}
                   className={styles.formInput}
                   placeholder="Your Name"
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -146,6 +164,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ isOpen, onClose }) => {
                   onChange={handleChange}
                   className={styles.formInput}
                   placeholder="your.email@example.com"
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -161,12 +180,17 @@ const ContactForm: React.FC<ContactFormProps> = ({ isOpen, onClose }) => {
                   className={styles.formTextarea}
                   placeholder="How can I help you?"
                   rows={5}
+                  disabled={isSubmitting}
                 />
               </div>
 
-              <button type="submit" className={styles.submitButton}>
-                Send Message
-                <span className={styles.buttonArrow}>→</span>
+              <button
+                type="submit"
+                className={styles.submitButton}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
+                {!isSubmitting && <span className={styles.buttonArrow}>→</span>}
               </button>
             </form>
           )}

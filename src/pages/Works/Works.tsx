@@ -39,9 +39,9 @@ const Works = () => {
   const works: WorkItem[] = [
     {
       id: "project1",
-      title: "Web agency",
+      title: "Fake Web Agency",
       description:
-        "Web agency website with a modern and responsive animated design",
+        "Built from the ground up. Quick, smooth, and dynamic — modern animations and a seamless user flow.",
       tech: ["Next.js", "Tailwind", "Aceternity"],
       imageUrl: webAgency,
       githubUrl: "https://github.com/IlyaRozhok/web-agency-ptf",
@@ -50,7 +50,8 @@ const Works = () => {
     {
       id: "project2",
       title: "Design studio",
-      description: "Commercial and private interiors",
+      description:
+        "A modern, responsive landing page for a digital agency. Focused on sleek animations and clean UI to engage users and showcase services.",
       tech: ["React", "email.js", "SCSS"],
       imageUrl: moodern,
       githubUrl: "https://github.com/IlyaRozhok/maramus",
@@ -59,8 +60,9 @@ const Works = () => {
     {
       id: "project3",
       title: "Portfolio Website",
-      description:
-        "Modern, responsive portfolio website with interactive UI elements and animations.",
+      description: `A dynamic, responsive portfolio showcasing skills in 3D animations and modern web design.
+Engaging visuals and smooth animations make any brand stand out and create a memorable user experience.
+Want a similar website for your business? Let’s create it together.`,
       tech: ["React", "GSAP", "SCSS"],
       imageUrl: portfolio1,
       githubUrl: "https://github.com/IlyaRozhok/frontend",

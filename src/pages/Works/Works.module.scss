@@ -19,17 +19,6 @@
   pointer-events: none;
 }
 
-// .worksBg::after {
-//   content: "";
-//   position: absolute;
-//   inset: 0;
-//   background: url("https://www.transparenttextures.com/patterns/noise.png");
-//   opacity: 0.07;
-//   mix-blend-mode: overlay;
-//   z-index: 1;
-//   pointer-events: none;
-// }
-
 .sectionConnector {
   position: absolute;
   top: -60px;
@@ -52,6 +41,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .container {
