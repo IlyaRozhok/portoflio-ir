@@ -1,10 +1,10 @@
 import React from "react";
 import { FaCode, FaMobile, FaLightbulb } from "react-icons/fa";
-//@i
-import { MdCloudUpload } from "react-icons/md";
 import styles from "./About.module.scss";
 import GlowingText from "../GlowingText/GlowingText";
 import SectionTitle from "../SectionTitle/SectionTitle";
+// @ts-ignore
+const MdCloudUpload = require("react-icons/md").MdCloudUpload;
 
 // Tech stack icons and labels
 const technologies = [
@@ -67,6 +67,7 @@ const About: React.FC = () => {
 
               <div className={styles.serviceCard}>
                 <div className={styles.serviceIcon}>
+                  {/* @ts-ignore */}
                   <MdCloudUpload size={24} />
                 </div>
                 <h4 className={styles.serviceTitle}>Deployment</h4>
