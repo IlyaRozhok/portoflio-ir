@@ -990,6 +990,9 @@
     vertical-align: middle;
     animation: blink 1s step-end infinite;
   }
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
 }
 
 .profileAndCodeContainer {
