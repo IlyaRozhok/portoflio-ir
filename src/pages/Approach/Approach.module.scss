@@ -503,99 +503,42 @@
 
 @media (max-width: 768px) {
   .approachSection {
-    padding: 3rem 0;
+    padding: 2rem 0;
   }
 
-  .sectionTitle {
-    font-size: 2rem;
-    margin-bottom: 2.5rem;
+  .timelineContainer {
+    padding: 0 1rem;
   }
 
   .approachTimelineGrid {
-    gap: 3.2rem;
-    padding: 0;
-    max-width: 100%;
-    align-items: center;
-    position: relative;
-  }
-
-  .timelineWrapper {
-    min-height: 450px;
-    position: relative;
-  }
-
-  .timelineLine {
-    position: absolute;
-    right: 1rem;
-    left: auto;
-    transform: none;
-    top: 0;
-    bottom: -50px;
-    width: 3px;
-    height: calc(100%);
-    background-color: rgba(97, 218, 251, 0.25);
-    border-radius: 2px;
-    z-index: 5;
-  }
-
-  .timelineProgress {
-    height: 0%;
-    background: linear-gradient(180deg, #61dafb 0%, #5651e5 60%, #ffd700 100%);
-    box-shadow: 0 0 15px rgba(97, 218, 251, 0.5);
-  }
-
-  .timelineLamp {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -45px;
-    width: 50px;
-    height: 50px;
-    border: 1px solid rgba(255, 215, 0, 0.6);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-    background-color: rgba(10, 25, 41, 0.95);
-  }
-
-  .timelineLampIcon {
-    font-size: 30px;
-    color: rgba(255, 215, 0, 0.7);
-  }
-
-  .timelineLampActive .timelineLampIcon {
-    color: #ffd700;
-    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1));
-    transform: scale(1.1);
-  }
-
-  .approachTimelineGrid::after {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
   }
 
   .approachCard {
-    padding: 1.5rem;
-    width: 90%;
-    margin: 0 auto;
-    box-sizing: border-box;
-    text-align: center;
-    position: relative;
-    background-color: rgba(10, 25, 41, 0.95);
-    z-index: 20;
-    border: 1px solid rgba(97, 218, 251, 0.2);
+    width: 100%;
+    margin: 0;
+    opacity: 1 !important;
+    transform: none !important;
   }
 
-  .approachCard::after {
+  .timelineLine {
+    display: none;
+  }
+
+  .timelineArrow {
     display: none;
   }
 
   .approachIcon {
-    width: 42px;
-    height: 42px;
-    padding: 0.5rem;
-    margin: 0 auto 1rem auto;
+    margin-bottom: 1rem;
   }
 
   .approachTitle {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
   }
 
   .approachDescription {

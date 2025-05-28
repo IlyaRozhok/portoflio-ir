@@ -49,89 +49,83 @@ const Approach = () => {
   ];
 
   useEffect(() => {
+    // Check if device is mobile
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
     // Animation for the approach section
     const approachSection = approachRef.current;
     if (approachSection) {
-      gsap.fromTo(
-        approachSection,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: approachSection,
-            start: "top 80%",
-          },
-        }
-      );
+      if (isMobile) {
+        // For mobile devices, set opacity to 1 immediately
+        gsap.set(approachSection, { opacity: 1, y: 0 });
+        // Set all cards to active on mobile
+        setActiveCards([true, true, true]);
+      } else {
+        // For desktop, use the original animation
+        gsap.fromTo(
+          approachSection,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: approachSection,
+              start: "top 80%",
+            },
+          }
+        );
+      }
     }
 
     // Animation for the connecting line and lamp
     if (timelineRef.current) {
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: timelineRef.current,
-          start: "top 80%",
-          end: "center 30%",
-          scrub: 0.5,
-          onUpdate: (self) => {
-            const progress = self.progress;
+      if (isMobile) {
+        // For mobile devices, set the line height to 100% immediately
+        gsap.set(lineRef.current, { height: "100%" });
+      } else {
+        const timeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: timelineRef.current,
+            start: "top 80%",
+            end: "center 30%",
+            scrub: 0.5,
+            onUpdate: (self) => {
+              const progress = self.progress;
 
-            const newActiveCards = [false, false, false];
-            if (progress >= 0.85) {
-              newActiveCards[0] = true;
-              newActiveCards[1] = true;
-              newActiveCards[2] = true;
-            } else if (progress >= 0.5) {
-              newActiveCards[0] = true;
-              newActiveCards[1] = true;
-            } else if (progress >= 0.15) {
-              newActiveCards[0] = true;
-            }
-
-            setActiveCards((prevActiveCards) => {
-              if (
-                JSON.stringify(prevActiveCards) !==
-                JSON.stringify(newActiveCards)
-              ) {
-                return newActiveCards;
+              const newActiveCards = [false, false, false];
+              if (progress >= 0.85) {
+                newActiveCards[0] = true;
+                newActiveCards[1] = true;
+                newActiveCards[2] = true;
+              } else if (progress >= 0.5) {
+                newActiveCards[0] = true;
+                newActiveCards[1] = true;
+              } else if (progress >= 0.15) {
+                newActiveCards[0] = true;
               }
-              return prevActiveCards;
-            });
+
+              setActiveCards((prevActiveCards) => {
+                if (
+                  JSON.stringify(prevActiveCards) !==
+                  JSON.stringify(newActiveCards)
+                ) {
+                  return newActiveCards;
+                }
+                return prevActiveCards;
+              });
+            },
           },
-        },
-      });
+        });
 
-      timeline.to(lineRef.current, {
-        height: "100%",
-        duration: 0.7,
-        ease: "power1.inOut",
-      });
+        timeline.to(lineRef.current, {
+          height: "100%",
+          duration: 0.7,
+          ease: "power1.inOut",
+        });
+      }
     }
-
-    // Animation for approach items - only opacity, as transform is handled by CSS
-    // if (approachItemsRef.current.length > 0) {
-    //   approachItemsRef.current.forEach((item, index) => {
-    //     gsap.fromTo(
-    //       item,
-    //       { opacity: 0, y: 20 },
-    //       {
-    //         opacity: 1,
-    //         y: 0,
-    //         duration: 0.6,
-    //         delay: 0.2 + index * 0.15,
-    //         ease: "power2.out",
-    //         scrollTrigger: {
-    //           trigger: item,
-    //           start: "top 90%",
-    //           once: true,
-    //         },
-    //       }
-    //     );
-    //   });
-    // }
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
