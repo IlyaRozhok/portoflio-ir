@@ -62,7 +62,7 @@ const Works = () => {
       title: "Portfolio Website",
       description: `A dynamic, responsive portfolio showcasing skills in 3D animations and modern web design.
 Engaging visuals and smooth animations make any brand stand out and create a memorable user experience.
-Want a similar website for your business? Let’s create it together.`,
+Want a similar website for your business? Let's create it together.`,
       tech: ["React", "GSAP", "SCSS"],
       imageUrl: portfolio1,
       githubUrl: "https://github.com/IlyaRozhok/frontend",
@@ -71,19 +71,28 @@ Want a similar website for your business? Let’s create it together.`,
   ];
 
   useEffect(() => {
+    // Check if device is mobile
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
     if (sectionRef.current) {
-      gsap.fromTo(
-        sectionRef.current,
-        { opacity: 0 },
-        {
-          opacity: 1,
-          duration: 1,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-          },
-        }
-      );
+      if (isMobile) {
+        // For mobile devices, set opacity to 1 immediately
+        gsap.set(sectionRef.current, { opacity: 1 });
+      } else {
+        // For desktop, use the original animation
+        gsap.fromTo(
+          sectionRef.current,
+          { opacity: 0 },
+          {
+            opacity: 1,
+            duration: 1,
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 80%",
+            },
+          }
+        );
+      }
     }
 
     if (worksRef.current) {
@@ -92,26 +101,32 @@ Want a similar website for your business? Let’s create it together.`,
       );
 
       workItems.forEach((item, index) => {
-        gsap.fromTo(
-          item,
-          {
-            opacity: 0,
-            y: 50,
-            scale: 0.95,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.7,
-            delay: 0.3 + index * 0.15,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: item,
-              start: "top 85%",
+        if (isMobile) {
+          // For mobile devices, set opacity to 1 immediately
+          gsap.set(item, { opacity: 1, y: 0, scale: 1 });
+        } else {
+          // For desktop, use the original animation
+          gsap.fromTo(
+            item,
+            {
+              opacity: 0,
+              y: 50,
+              scale: 0.95,
             },
-          }
-        );
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.7,
+              delay: 0.3 + index * 0.15,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: item,
+                start: "top 85%",
+              },
+            }
+          );
+        }
       });
     }
 
