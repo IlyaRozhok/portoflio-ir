@@ -11,6 +11,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ isOpen, onClose }) => {
   const [formState, setFormState] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
 
@@ -68,15 +69,15 @@ const ContactForm: React.FC<ContactFormProps> = ({ isOpen, onClose }) => {
 
     try {
       // Replace these with your actual EmailJS credentials
-      await emailjs.sendForm(
+      await emailjs.send(
         "service_1vnpyld",
         "portfolio-template",
-        formRef.current!,
+        formState, 
         "oypc-KiXUrhpv25lH"
       );
 
       setFormStatus("success");
-      setFormState({ name: "", email: "", message: "" });
+      setFormState({ name: "", email: "", phone: "", message: "" });
 
       // Reset form status after 3 seconds and close modal
       setTimeout(() => {
@@ -164,6 +165,23 @@ const ContactForm: React.FC<ContactFormProps> = ({ isOpen, onClose }) => {
                   onChange={handleChange}
                   className={styles.formInput}
                   placeholder="your.email@example.com"
+                  disabled={isSubmitting}
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label htmlFor="phone" className={styles.formLabel}>
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formState.phone}
+                  onChange={handleChange}
+                  className={styles.formInput}
+                  placeholder="Your phone number"
+                  pattern="[0-9\-\+\s\(\)]*"
                   disabled={isSubmitting}
                 />
               </div>

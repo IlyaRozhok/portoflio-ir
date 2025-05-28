@@ -116,18 +116,32 @@
 }
 
 .formGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .formLabel {
-  font-size: 0.9rem;
-  color: #d1cfe2;
-  font-weight: 500;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #9161e7;
 }
 
-.formInput,
+.formInput {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+  background: #18122b;
+  color: #fff;
+  transition: border 0.2s;
+}
+
+.formInput:focus {
+  border-color: #9161e7;
+  outline: none;
+}
+
 .formTextarea {
   width: 100%;
   padding: 0.8rem 1rem;
