@@ -26,12 +26,13 @@ const About: React.FC = () => {
         <div className={styles.aboutContentWrapper}>
           <div className={styles.aboutTextContent}>
             <p className={styles.aboutText}>
-              Hi, I'm Ilya, a 𝘍𝘶𝘭𝘭-𝘚𝘵𝘢𝘤𝘬 𝘋𝘦𝘷𝘦𝘭𝘰𝘱𝘦𝘳 with 3+ years of experience
-              building fast, modern, and reliable websites and web applications.
-              I help businesses create fast, scalable, and user-friendly
-              websites that increase engagement and drive conversions. I focus
-              on delivering 𝙘𝙡𝙚𝙖𝙣, 𝙚𝙛𝙛𝙞𝙘𝙞𝙚𝙣𝙩 𝙘𝙤𝙙𝙚 and 𝙧𝙚𝙨𝙪𝙡𝙩𝙨 that drive 𝘆𝗼𝘂𝗿
-              𝗯𝘂𝘀𝗶𝗻𝗲𝘀𝘀 𝗴𝗼𝗮𝗹𝘀 — no unnecessary delays, no distractions.
+              Hi, I’m Ilya — a results-driven Full-Stack Developer with over 3
+              years of experience building high-performance web applications for
+              growing businesses. I specialize in fast, scalable, and
+              user-friendly solutions that convert visitors into customers and
+              streamline operations. My approach is simple: clean code,
+              business-oriented logic, and a relentless focus on what matters —
+              your goals. No delays. No bloat. Just measurable results.
             </p>
 
             <div className={styles.skillBars}>
@@ -96,6 +97,34 @@ const About: React.FC = () => {
                 <p className={styles.serviceDesc}>
                   Providing expert advice on technology stack selection and
                   architecture.
+                </p>
+              </div>
+
+              <div className={styles.serviceCard}>
+                <div className={styles.serviceIcon}>
+                  <FaCode />
+                </div>
+                <h4 className={styles.serviceTitle}>Telegram Bots</h4>
+                <p className={styles.serviceDesc}>
+                  Custom bots that automate workflows, enhance customer support,
+                  and integrate with your services — directly inside Telegram.
+                  Fast to deploy, powerful in function, and fully tailored to
+                  your business needs.
+                </p>
+              </div>
+
+              <div className={styles.serviceCard}>
+                <div className={styles.serviceIcon}>
+                  <FaLightbulb />
+                </div>
+                <h4 className={styles.serviceTitle}>
+                  Internal Tools & Dashboards
+                </h4>
+                <p className={styles.serviceDesc}>
+                  Building powerful admin panels, CRMs, and data dashboards that
+                  give your team full control and visibility. Intuitive UI,
+                  secure access, and full alignment with your business
+                  processes.
                 </p>
               </div>
             </div>

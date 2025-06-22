@@ -3,8 +3,8 @@ import styles from "./Works.module.scss";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import moodern from "../../assets/img/moodern.png";
-import portfolio1 from "../../assets/img/portfolio1.png";
 import webAgency from "../../assets/img/web-agency.png";
+import finfix from "../../assets/img/finfix.png";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -59,14 +59,19 @@ const Works = () => {
     },
     {
       id: "project3",
-      title: "Portfolio Website",
-      description: `A dynamic, responsive portfolio showcasing skills in 3D animations and modern web design.
-Engaging visuals and smooth animations make any brand stand out and create a memorable user experience.
-Want a similar website for your business? Let's create it together.`,
-      tech: ["React", "GSAP", "SCSS"],
-      imageUrl: portfolio1,
-      githubUrl: "https://github.com/IlyaRozhok/frontend",
-      liveUrl: "https://project3-demo.com",
+      title: "FinFix | Telegram bot",
+      description: `FinFix is a Telegram-based personal finance tracker that helps users manage debts, expenses, and income in a simple chat interface. It offers visual statistics, CSV exports, and full control — without the need for apps or spreadsheets. Designed, created and deployed from scratch`,
+      tech: [
+        "Node.js",
+        "PostgreSQL",
+        "Telegraf",
+        "Railway",
+        "Render",
+        "Monobank API",
+      ],
+      imageUrl: finfix,
+      githubUrl: "https://github.com/IlyaRozhok/telegram-bot",
+      liveUrl: "https://finfix.vercel.app/",
     },
   ];
 

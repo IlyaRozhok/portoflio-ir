@@ -97,14 +97,19 @@ const HomePage: React.FC<HomePageProps> = ({ onContactClick, displayForm }) => {
       <main className={styles.mainContent}>
         <div className={styles.heroTextContainer}>
           <h1 className={styles.heroTitle}>
-            <GlowingText text="Website Development" />
+            <GlowingText text="DIGITAL SOLUTIONS" />
           </h1>
           <p className={styles.codeComment}>
-            // Hi all. My name is Illia Rozhok. I am
+            // Hi all. My name is Illia Rozhok. I build scalable products,
+            websites, bots, and internal tools From modern landing pages to
+            Telegram bots and business dashboards — I deliver solutions that
+            help teams save time, grow faster, and impress users.
           </p>
           <p className={styles.codeRole}>
             <span className={styles.arrowSymbol}>&gt;</span>{" "}
-            <span className={styles.roleText}>Full-stack developer</span>
+            <span className={styles.roleText}>
+              Web apps, bots & automation. From UI to API.
+            </span>
             {cursorVisible && <span className={styles.cursor}></span>}
           </p>
         </div>

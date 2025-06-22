@@ -5,49 +5,61 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(8px);
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.4) 0%,
+    rgba(30, 41, 59, 0.6) 50%,
+    rgba(15, 23, 42, 0.4) 100%
+  );
+  backdrop-filter: blur(20px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  padding: 1rem;
-  animation: fadeInOverlay 0.3s ease-out;
+  padding: 2rem;
+  animation: fadeInOverlay 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modalContent {
   position: relative;
-  max-width: 550px;
-  max-height: 90vh;
+  width: 700px;
+  max-height: 100vh;
   overflow-y: auto;
   animation: slideInModal 0.4s ease-out;
 }
 
 .closeButton {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-size: 24px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 20px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 10;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 
   &:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
   }
 
   &:active {
-    transform: scale(0.95);
+    opacity: 0.7;
   }
 }
 
@@ -63,103 +75,448 @@
 @keyframes slideInModal {
   from {
     opacity: 0;
-    transform: translateY(-50px) scale(0.9);
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
+  }
+}
+
+// Responsive Design
+@media (max-width: 700px) {
+  .modalOverlay {
+    padding: 0;
+  }
+
+  .modalContent {
+    width: 100vw;
+    max-width: 100vw;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  .formContainer {
+    border-radius: 0;
+    padding: 1.25rem 0.75rem;
+    max-width: 100vw;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .formHeader {
+    margin-bottom: 1.5rem;
+  }
+
+  .formTitle {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .formSubtitle {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .contactForm {
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  .formGroup {
+    width: 100%;
+  }
+
+  .formInput,
+  .formTextarea {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.7rem 0.8rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+  }
+
+  .formTextarea {
+    min-height: 70px;
+    resize: vertical;
+  }
+
+  .submitButton {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+
+  .closeButton {
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    z-index: 20;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 701px) {
+  .modalOverlay {
+    padding: 1rem;
+  }
+
+  .modalContent {
+    width: 100%;
+    max-width: 95vw;
+    max-height: 90vh;
+  }
+
+  .formContainer {
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+    max-width: 100%;
+  }
+
+  .formTitle {
+    font-size: 1.6rem;
+  }
+
+  .formInput,
+  .formTextarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border-radius: 14px;
+  }
+
+  .submitButton {
+    padding: 0.9rem 2rem;
+    border-radius: 14px;
+  }
+
+  .closeButton {
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 640px) and (min-width: 481px) {
+  .modalContent {
+    width: 90%;
+    max-width: 90vw;
+  }
+
+  .formContainer {
+    max-width: 100%;
+    padding: 2rem 1.5rem;
+  }
+
+  .formInput,
+  .formTextarea {
+    width: 98%;
+  }
+}
+
+@media (max-width: 480px) and (min-width: 401px) {
+  .modalOverlay {
+    padding: 0.5rem;
+  }
+
+  .modalContent {
+    width: 100%;
+    max-width: 98vw;
+    max-height: 95vh;
+  }
+
+  .formContainer {
+    padding: 1.5rem 1rem;
+    margin: 0;
+    border-radius: 16px;
+    max-width: 100%;
+  }
+
+  .formTitle {
+    font-size: 1.3rem;
+  }
+
+  .formSubtitle {
+    font-size: 0.8rem;
+  }
+
+  .contactForm {
+    gap: 1.2rem;
+  }
+
+  .formInput,
+  .formTextarea {
+    width: 100%;
+    padding: 0.8rem 0.9rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+  }
+
+  .formTextarea {
+    min-height: 100px;
+  }
+
+  .submitButton {
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+  }
+
+  .closeButton {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .formContainer {
+    padding: 1rem 0.75rem;
+  }
+
+  .formTitle {
+    font-size: 1.2rem;
+  }
+
+  .formSubtitle {
+    font-size: 0.8rem;
+  }
+
+  .contactForm {
+    gap: 0.8rem;
+  }
+
+  .formInput,
+  .formTextarea {
+    width: 100%;
+    padding: 0.65rem 0.8rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+  }
+
+  .formTextarea {
+    min-height: 70px;
+  }
+
+  .submitButton {
+    padding: 0.7rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+  }
+
+  .closeButton {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
   }
 }
 
 .formContainer {
+  max-width: 540px;
+  width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  background: rgba(15, 15, 25, 0.75);
-  backdrop-filter: blur(12px);
-  border-radius: 16px;
-  padding: 3.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  backdrop-filter: blur(40px);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(145, 97, 231, 0.2),
+      rgba(85, 81, 255, 0.1),
+      rgba(145, 97, 231, 0.2)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
   }
 }
 
 .formHeader {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   text-align: center;
+  position: relative;
 }
 
 .formTitle {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  background: linear-gradient(90deg, #9161e7 0%, #5551ff 100%);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #e2e8f0 30%,
+    #9161e7 70%,
+    #5551ff 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  letter-spacing: -0.01em;
 }
 
 .formSubtitle {
-  font-size: 1rem;
-  color: #a9a6b6;
-  line-height: 1.5;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  font-weight: 300;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .contactForm {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.8rem;
 }
 
 .formGroup {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
+  position: relative;
 }
 
 .formLabel {
   display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: #9161e7;
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  letter-spacing: 0.025em;
+  transition: color 0.3s ease;
 }
 
 .formInput {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid #d1d5db;
+  width: 94%;
+  padding: 1rem 1.2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 1rem;
-  background: #18122b;
-  color: #fff;
-  transition: border 0.2s;
-}
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  backdrop-filter: blur(20px);
+  color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.1);
+  position: relative;
 
-.formInput:focus {
-  border-color: #9161e7;
-  outline: none;
-}
-
-.formTextarea {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  border-radius: 8px;
-  background: rgba(30, 30, 50, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
-  font-size: 1rem;
-  transition: all 0.2s ease;
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+    transition: color 0.3s ease;
+  }
 
   &:focus {
     outline: none;
-    border-color: rgba(145, 97, 231, 0.5);
-    box-shadow: 0 0 0 2px rgba(145, 97, 231, 0.25);
+    border-color: rgba(145, 97, 231, 0.4);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.1) 100%
+    );
+    box-shadow: 0 0 0 3px rgba(145, 97, 231, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15),
+      0 4px 20px rgba(145, 97, 231, 0.1);
+    transform: translateY(-1px);
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
   }
+}
+
+.formTextarea {
+  width: 94%;
+  padding: 1rem 1.2rem;
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 120px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.1);
 
   &::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.35);
+    transition: color 0.3s ease;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: rgba(145, 97, 231, 0.4);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.1) 100%
+    );
+    box-shadow: 0 0 0 3px rgba(145, 97, 231, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15),
+      0 4px 20px rgba(145, 97, 231, 0.1);
+    transform: translateY(-1px);
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
   }
 }
 
@@ -168,30 +525,55 @@
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  background: linear-gradient(90deg, #9161e7 0%, #5551ff 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(145, 97, 231, 0.8) 0%,
+    rgba(85, 81, 255, 0.9) 50%,
+    rgba(145, 97, 231, 0.8) 100%
+  );
+  backdrop-filter: blur(20px);
   color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 0.9rem 2rem;
-  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 1rem 2.5rem;
+  font-weight: 500;
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 0.5rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 1rem;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 20px rgba(145, 97, 231, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: left 0.6s;
+  }
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(85, 81, 255, 0.3);
-
-    .buttonArrow {
-      transform: translateX(4px);
-    }
+    opacity: 0.9;
   }
 
   &:active {
-    transform: translateY(1px);
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
   }
 }
 
@@ -251,32 +633,5 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@media (max-width: 768px) {
-  .modalOverlay {
-    padding: 0.5rem;
-  }
-
-  .modalContent {
-    max-height: 95vh;
-  }
-
-  .formContainer {
-    padding: 1.5rem;
-    margin: 0;
-  }
-
-  .formTitle {
-    font-size: 1.75rem;
-  }
-
-  .closeButton {
-    width: 36px;
-    height: 36px;
-    font-size: 20px;
-    top: 0.75rem;
-    right: 0.75rem;
   }
 }
